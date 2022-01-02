@@ -150,7 +150,6 @@ function Post() {
               value={body.username}
               onChange={(e) => changeHandler(e)}
               required
-              placeholder={process.env.REACT_APP_CLOUD_NAME}
             />
           </div>
           <div className="item">
@@ -175,7 +174,6 @@ function Post() {
             value={body.content}
             onChange={(e) => changeHandler(e)}
             required
-            placeholder={process.env.REACT_APP_SITEKEY}
           ></textarea>
         </div>
         <div className="FileContentUpload">
@@ -188,7 +186,7 @@ function Post() {
             Return
           </Link>
           <ReCAPTCHA
-            sitekey={process.env.REACT_APP_SITEKEY}
+            sitekey="6Ld_hM4dAAAAAKoqdJaaT9KHl53q-dfOY0RusKh8"
             onChange={onChange}
           />
           <input type="submit" value="Post" />
