@@ -81,6 +81,17 @@ form .full textarea {
   resize: none;
 }
 
+.FileContentLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.SupportedFileContent {
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
 .FileContentUpload {
   margin-bottom: 30px;
   padding-bottom: 20px;

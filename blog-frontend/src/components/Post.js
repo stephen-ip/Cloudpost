@@ -177,7 +177,10 @@ function Post() {
           ></textarea>
         </div>
         <div className="FileContentUpload">
-          <label for="filecontent">File Content</label>
+          <div className="FileContentLabel">
+            <label for="filecontent">File Content</label>
+            <p className="SupportedFileContent"> (currently supports: .png .jpg/.jpeg .gif .mp4) </p>
+          </div>
           <input type="file" name="filecontent" onChange={(e) => handleFile(e)}></input>
         </div>
         <div className="action">
