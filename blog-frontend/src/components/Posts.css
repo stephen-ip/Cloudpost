@@ -1,0 +1,79 @@
+body {
+  background: linear-gradient(to left top, blue, red) fixed;
+}
+
+.Posts {
+  height: 100%;
+  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background: -webkit-linear-gradient( to left top, blue, red);
+    background: -moz-linear-gradient( to left top, blue, red);
+    background: -ms-linear-gradient( to left top, blue, red);
+    background: -o-linear-gradient( to left top, blue, red);
+    background: linear-gradient( to left top, blue, red);
+}
+
+.Content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 10%;
+    left: 10%;
+    max-width: 80%;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80vw;
+}
+
+.PostsTitle {
+  font-size: 70px;
+  padding-bottom: "10px";
+  letter-spacing: 6px;
+  border-bottom: 5px solid white;
+  display: block;
+  padding-bottom: 8px;
+  margin-bottom: 32px;  
+  margin-right: auto;
+}
+
+.Navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  gap: 30px;
+  font-size: 30px;
+  color: grey;
+  margin-left: 30px;
+  margin-right: 60px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.ProfileIcon {
+  margin-right: 4px;
+}
+
+.Loading {
+  color: whitesmoke;
+}
+
+.PostsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-left: 86px;
+    /* justify-content: center; */
+    margin-bottom: 25px;
+}
+
+.Post {
+    margin: 20px 25px 20px 25px;
+}
