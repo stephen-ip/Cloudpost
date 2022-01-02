@@ -186,7 +186,7 @@ function Post() {
             Return
           </Link>
           <ReCAPTCHA
-            sitekey="6Ld_hM4dAAAAAKoqdJaaT9KHl53q-dfOY0RusKh8"
+            sitekey={process.env.REACT_APP_SITEKEY}
             onChange={onChange}
           />
           <input type="submit" value="Post" />
