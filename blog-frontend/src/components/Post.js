@@ -150,6 +150,9 @@ function Post() {
               value={body.username}
               onChange={(e) => changeHandler(e)}
               required
+              placeholder="Between 3 and 20 characters"
+              minlength="3"
+              maxlength = "20"
             />
           </div>
           <div className="item">
