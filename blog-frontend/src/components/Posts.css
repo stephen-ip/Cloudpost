@@ -57,8 +57,37 @@ body {
   border-radius: 4px;
 }
 
+.toLogIn {
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 5px;
+  background: rgba(127, 127, 127, 0.2);
+}
+
+.toSignUp {
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.toLogIn:hover, .toSignUp:hover {
+  transform: scale(1.03)
+}
+
+.MakePostIcon, .LogInIcon {
+  margin-bottom: 2px;
+  margin-bottom: 6px;
+}
+
 .ProfileIcon {
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+.SignUpIcon {
   margin-right: 4px;
+  margin-bottom: 6px;
 }
 
 .Loading {

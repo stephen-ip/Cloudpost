@@ -1,0 +1,25 @@
+.ProfileUsername {
+    margin: 0;
+    color: palegoldenrod;
+}
+
+.HomeIcon {
+    margin-right: 5px;
+    margin-bottom: 6px;
+}
+
+.LogOutButton {
+    border: 0;
+    background-color: transparent;
+    color: cadetblue;
+}
+
+.LogOutButton:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.LogOutIcon {
+    margin-right: 5px;
+    margin-bottom: 6px;
+}

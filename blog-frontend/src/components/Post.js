@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Post.css";
 import { Link } from "@reach/router";
 import axios from "axios";
@@ -31,21 +31,44 @@ const CAPTCHAprompt = () => {
 };
 
 function Post() {
-  const [body, setBody] = useState({
+  const [user, setUser] = useState({
+    logged_in: false,
     username: "",
+    email: ""
+  });
+  const [body, setBody] = useState({
+    username: user.username,
     title: "",
     content: "",
     filecontent: null,
     filecontentformat: null,
     filecontentposter: null
   });
-
   const [completeCAPTCHA, setCompleteCAPTCHA] = useState(false);
   const [verified, setVerified] = useState(false);
   const [result, showResult] = useState(false);
   const [errorCloudinary, showErrorCloudinary] = useState(false);
   const [errorCloudflare, showErrorCloudflare] = useState(false);
   const [sending, showSending] = useState(false);
+
+  function checkLoginStatus() {
+    axios
+      .get("https://cloudpost-backend-auth.herokuapp.com/logged_in", { withCredentials: true })
+      .then((response) => {
+        setUser({
+          logged_in: response.data.logged_in,
+          username: response.data.username,
+          email:response.data.email
+        })
+      })
+      .catch((error) => {
+        setUser({
+          logged_in: false,
+          username: "",
+          email: ""
+        })
+      });
+  }
 
   function changeHandler(e) {
     const newBody = { ...body };
@@ -134,29 +157,37 @@ function Post() {
     showErrorCloudinary(false);
   }, 5000);
 
+  useEffect(() => {
+    checkLoginStatus();
+  }, [])
+
   return (
     <div className="CreatePost">
+      {user.logged_in ? (
       <form className="CreatePostForm" onSubmit={(e) => postRequest(e)}>
         <div className="title">
-          <h2>Create Post</h2>
+          <h2 className="titleh2">Create Post</h2>
         </div>
         <div className="half">
           <div className="item">
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input
+              className="UsernameInput"
               type="text"
               name="username"
               id="username"
-              value={body.username}
-              onChange={(e) => changeHandler(e)}
-              required
-              placeholder="Between 3 and 20 characters"
-              minlength="3"
-              maxlength = "20"
+              // value={body.username}
+              // onChange={(e) => changeHandler(e)}
+              // required
+              // placeholder="Between 3 and 20 characters"
+              // minlength="3"
+              // maxlength = "20"
+              value={user.username}
+              readOnly
             />
           </div>
           <div className="item">
-            <label for="title">Title</label>
+            <label htmlFor="title">Title</label>
             <input
               type="text"
               name="title"
@@ -165,29 +196,29 @@ function Post() {
               onChange={(e) => changeHandler(e)}
               required
               placeholder="Max 30 characters"
-              maxlength = "30"
+              maxLength = "30"
             />
           </div>
         </div>
         <div className="full">
-          <label for="content">Content</label>
+          <label htmlFor="content">Content</label>
           <textarea
             name="content"
             id="content"
             value={body.content}
             onChange={(e) => changeHandler(e)}
             required
-          ></textarea>
+          />
         </div>
         <div className="FileContentUpload">
           <div className="FileContentLabel">
-            <label for="filecontent">File Content</label>
+            <label htmlFor="filecontent">File Content</label>
             <p className="SupportedFileContent"> (currently supports: .png .jpg/.jpeg .gif .mp4) </p>
           </div>
           <input type="file" name="filecontent" onChange={(e) => handleFile(e)}></input>
         </div>
         <div className="action">
-          <Link to="/" className="toHome">
+          <Link to="/" className="toHome" style={{ textDecoration: 'none' }}>
             <BsArrowReturnLeft className="ReturnArrowIcon"/>
             Return
           </Link>
@@ -206,7 +237,15 @@ function Post() {
           <h2 className="ErrorMessage">{errorCloudflare ? <ErrorCloudflare /> : null}</h2>
           <h2 className="ErrorMessage">{errorCloudinary ? <ErrorCloudinary /> : null}</h2>
         </div>
-      </form>
+      </form> ) : 
+      <div className="NotLoggedInPrompt">
+        <h2>You must be logged in to make a post</h2>
+        <div className="redirectOptions">
+          <a className="redirecttoLogIn" href="/login">Log In</a>
+          <a className="redirecttoSignUp" href="/signup">Sign Up</a>
+        </div>
+      </div>
+      }
     </div>
   );
 }

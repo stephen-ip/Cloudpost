@@ -202,9 +202,7 @@ export class PostCardFlip extends Component {
                 poster={this.props.filecontentposter}
               />
             ) : null}
-            <textarea className="post_content" readOnly>
-              {this.props.content}
-            </textarea>
+            <textarea className="post_content" value={this.props.content} readOnly />
             <div className="PostBackActions">
               <button className="ReturnButton" onClick={this.handleClick}>
                 <RiArrowGoBackFill />
