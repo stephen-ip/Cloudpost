@@ -51,6 +51,17 @@ function Post() {
   const [errorCloudflare, showErrorCloudflare] = useState(false);
   const [sending, showSending] = useState(false);
 
+  useEffect(() => {
+    setBody({
+      username: user.username,
+      title: body.title,
+      content: body.content,
+      filecontent: body.filecontent,
+      filecontentformat: body.filecontentformat,
+      filecontentposter: body.filecontentposter
+    })
+  }, [user.username])
+
   function checkLoginStatus() {
     axios
       .get("https://cloudpost-backend-auth.herokuapp.com/logged_in", { withCredentials: true })
