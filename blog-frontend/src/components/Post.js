@@ -95,7 +95,7 @@ function Post() {
   }
 
   function onChange(value) {
-    console.log("Captcha value:", value);
+    // console.log("Captcha value:", value);
     setVerified(true);
     setCompleteCAPTCHA(false);
   }

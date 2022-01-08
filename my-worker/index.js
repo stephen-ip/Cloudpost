@@ -2,6 +2,7 @@ const corsHeaders = {
   "Access-Control-Allow-Origin": "https://cloudpost-2zh.pages.dev",
   "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
   "Access-Control-Max-Age": "86400",
+  "Access-Control-Allow-Credentials": true  // ????
 }
 
 function handleOptions(request) {
@@ -102,8 +103,9 @@ async function handleRequest(request) {
         dislikes: 0
       }))
       const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Content-type': 'application/json'
+        'Access-Control-Allow-Origin': 'https://cloudpost-2zh.pages.dev',
+        'Content-type': 'application/json',
+        "Access-Control-Allow-Credentials": true // ???
       }
       return new Response(key, { headers })
     } 
